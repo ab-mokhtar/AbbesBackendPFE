@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,9 +19,10 @@ public class Planning {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "planning_generator")
     private Long id;
-    private Date debutPlanning ;
-    private Date finPlanning ;
-    private String Statut ;
-/*    @OneToOne(mappedBy = "planning", cascade = CascadeType.ALL)
-    private Demande demande;*/
+    private LocalDate date ;
+
+    private String description ;
+    @ManyToMany
+    private List<User> users;
+
 }
