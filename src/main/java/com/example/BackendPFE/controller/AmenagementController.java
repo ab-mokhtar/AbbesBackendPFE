@@ -4,7 +4,6 @@ import com.example.BackendPFE.exception.ResourceNotFoundException;
 import com.example.BackendPFE.model.Amenagement;
 import com.example.BackendPFE.repository.AmenagementRepository;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +34,7 @@ public class AmenagementController {
     }
 
     @PostMapping("/createAmenagement")
-    public Amenagement createAmenagement(@Valid @RequestBody Amenagement amenagement) {
+    public Amenagement createAmenagement( @RequestBody Amenagement amenagement) {
 
         return amenagementRepository.save(amenagement);
     }

@@ -3,7 +3,6 @@ package com.example.BackendPFE.controller;
 import com.example.BackendPFE.exception.ResourceNotFoundException;
 import com.example.BackendPFE.model.Livraison;
 import com.example.BackendPFE.repository.LivraisonRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +34,7 @@ public class LivraisonController {
     }
 
     @PostMapping("/createLivraison")
-    public Livraison createLivraison(@Valid @RequestBody Livraison livraison) {
+    public Livraison createLivraison( @RequestBody Livraison livraison) {
 
         return livraisonRepository.save(livraison);
     }

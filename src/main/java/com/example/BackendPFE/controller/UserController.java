@@ -2,13 +2,14 @@ package com.example.BackendPFE.controller;
 
 
 import com.example.BackendPFE.model.User;
+import com.example.BackendPFE.service.EmailSenderService;
 import com.example.BackendPFE.service.UserService;
-import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
@@ -73,5 +74,23 @@ public Long nbrUSers(){
     @GetMapping("/nbrUsers/{role}")
     public Long nbrUsersByRole(@PathVariable String role){
         return userService.nombresUsersByRole(role);
+    }
+    @PostConstruct
+    public void iniRolesAndUsers(){
+        userService.initRolesAndUsers();
+    }
+    @PostMapping("/mdpoub")
+    public String resetmpd(@RequestBody String email){
+    try {
+       // emailSenderService.sendmail(email);
+        return ("demande de récupération mot de passe enregistrée");
+
+    }
+    catch (Exception e){
+        System.out.println(e.getMessage());
+        return ("error");
+
+    }
+
     }
 }

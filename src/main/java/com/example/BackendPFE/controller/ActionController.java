@@ -6,7 +6,6 @@ import com.example.BackendPFE.model.Action;
 import com.example.BackendPFE.repository.ActionRepository;
 import com.example.BackendPFE.repository.DemandeRepository;
 import com.example.BackendPFE.repository.UserRepository;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +61,7 @@ public class ActionController {
     }
     @PutMapping("/updateAction/{id}")
     public ResponseEntity<Action> updateAction(@PathVariable(value = "id") Long id,
-                                               @Valid @RequestBody Action ActionDetails) throws    ResourceNotFoundException {
+                                                @RequestBody Action ActionDetails) throws    ResourceNotFoundException {
         Action action = actionRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Action not found for this id :: " + id));
 

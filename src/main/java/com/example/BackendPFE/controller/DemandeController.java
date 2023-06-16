@@ -4,11 +4,11 @@ import com.example.BackendPFE.exception.ResourceNotFoundException;
 import com.example.BackendPFE.model.Date;
 import com.example.BackendPFE.model.Demande;
 import com.example.BackendPFE.repository.*;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/Demande")
-//@PreAuthorize("hasRole('ADMIN')")
 @AllArgsConstructor
+
 public class DemandeController {
 
     DemandeRepository demandeRepository;
@@ -44,7 +44,7 @@ public class DemandeController {
         return new ResponseEntity<>(demande, HttpStatus.OK);
     }
     @PostMapping("/createDemande")
-    public Demande createDemande(@Valid @RequestBody Demande demande) {
+    public Demande createDemande( @RequestBody Demande demande) {
         // Set the reference
         demande.setReference(referenceRepository.findById(demande.getReference().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid reference ID")));
@@ -103,7 +103,6 @@ public class DemandeController {
                         ));
         return new ResponseEntity<>(_demande, HttpStatus.CREATED);
     }*/
-
     @PutMapping("/updateDemande/{id}")
     public ResponseEntity<Demande> updateDemande(@PathVariable("id") long id, @RequestBody Demande demande) throws ResourceNotFoundException {
         Demande _demande = demandeRepository.findById(id)
@@ -139,7 +138,6 @@ d.setDemande(_demande);
 
         return new ResponseEntity<>(demandeRepository.save(_demande), HttpStatus.OK);
     }
-
     @DeleteMapping("/deleteDemande/{id}")
     public ResponseEntity<HttpStatus> deleteDemande(@PathVariable("id") long id) {
         demandeRepository.deleteById(id);

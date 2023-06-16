@@ -16,29 +16,4 @@ public class BackendPfeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackendPfeApplication.class, args);
 	}
-	/*@Bean
-	public CommandLineRunner commandLineRunner(
-			AuthenticationService service
-	) {
-		return args -> {
-			var admin = RegisterRequest.builder()
-					.nom("Admin")
-					.prenom("Admin")
-					.mail("admin@mail.com")
-					.motdePasse("password")
-					.role(ADMIN)
-					.build();
-			System.out.println("Admin token: " + service.register(admin).getToken());
-
-			var manager = RegisterRequest.builder()
-					.nom("Admin")
-					.prenom("Admin")
-					.mail("manager@mail.com")
-					.motdePasse("password")
-					.role(MANAGER)
-					.build();
-			System.out.println("Manager token: " + service.register(manager).getToken());
-
-		};
-	}*/
 }

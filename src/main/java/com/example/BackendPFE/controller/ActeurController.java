@@ -3,7 +3,6 @@ package com.example.BackendPFE.controller;
 import com.example.BackendPFE.exception.ResourceNotFoundException;
 import com.example.BackendPFE.model.User;
 import com.example.BackendPFE.repository.UserRepository;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

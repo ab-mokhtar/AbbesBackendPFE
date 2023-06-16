@@ -6,6 +6,7 @@ import com.example.BackendPFE.model.User;
 import com.example.BackendPFE.repository.RoleRepository;
 import com.example.BackendPFE.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -15,7 +16,9 @@ import java.util.*;
 public class UserService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
-   // private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
+
+    // private PasswordEncoder passwordEncoder;
 
 
 
@@ -92,7 +95,8 @@ public class UserService {
             }
             //setting uuid to the user
             user.setUuid(UUID.randomUUID().toString());
-            user.setActive(false);
+            user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+            user.setActive(true);
 
 
             return userRepository.save(user);
@@ -106,9 +110,9 @@ public class UserService {
     public Long nombresUsersByRole(String role) {
         return userRepository.countByRoles_roleName(role);
     }
-/*
-    public void initRolesAndUsers(){
 
+    public void initRolesAndUsers(){
+/*
         //---------- adding ADMIN_ROLE -----------------
         Role adminRole = new Role();
         adminRole.setRoleName("ROLE_ADMIN");
@@ -140,7 +144,7 @@ public class UserService {
         roleRepository.save(SgRole);
 
 
-
+*/
         //---------- adding ADMIN --------------
         User adminUser = new User();
         adminUser.setUserEmail("admin@test.com");
@@ -151,13 +155,13 @@ public class UserService {
         adminUser.setAddress("1235 xyz 456 ");
         adminUser.setActive(true);
         Set<Role> adminRoles = new HashSet<>();
-        adminRoles.add(adminRole);
+        adminRoles.add(roleRepository.findById("Admin").orElseThrow());
         //SETTING ADMIN ROLE
         adminUser.setUuid(UUID.randomUUID().toString());
         adminUser.setRoles(adminRoles);
         userRepository.save(adminUser);
 
-        generateFunders(funderRole);
+
     }
 /*
     //GENERATING FAKE DATA FOR FUNDER
@@ -193,4 +197,7 @@ public class UserService {
     public String getEncodedPassword(String password){
         return passwordEncoder.encode(password);
     }*/
+public String getEncodedPassword(String password){
+    return passwordEncoder.encode(password);
+}
 }

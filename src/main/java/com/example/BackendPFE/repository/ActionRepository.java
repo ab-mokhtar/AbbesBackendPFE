@@ -2,7 +2,7 @@ package com.example.BackendPFE.repository;
 
 import com.example.BackendPFE.model.Action;
 import com.example.BackendPFE.model.Charge;
-import jakarta.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 

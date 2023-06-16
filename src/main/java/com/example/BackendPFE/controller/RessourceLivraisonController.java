@@ -5,7 +5,6 @@ import com.example.BackendPFE.model.Livraison;
 import com.example.BackendPFE.model.RessourceLivraison;
 import com.example.BackendPFE.repository.LivraisonRepository;
 import com.example.BackendPFE.repository.RessourceLivraisonRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,7 @@ public class RessourceLivraisonController {
     }
 
     @PostMapping("/createRessourceLivraison")
-    public RessourceLivraison createRessourceLivraison(@Valid @RequestBody RessourceLivraison ressourceLivraison) {
+    public RessourceLivraison createRessourceLivraison( @RequestBody RessourceLivraison ressourceLivraison) {
 
         return ressourceLivraisonRepository.save(ressourceLivraison);
     }

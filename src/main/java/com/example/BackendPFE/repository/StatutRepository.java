@@ -2,9 +2,9 @@ package com.example.BackendPFE.repository;
 
 import com.example.BackendPFE.model.Charge;
 import com.example.BackendPFE.model.Statut;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface StatutRepository extends JpaRepository<Statut,Long> {

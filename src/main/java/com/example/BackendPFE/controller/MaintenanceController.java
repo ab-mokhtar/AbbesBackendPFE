@@ -3,7 +3,6 @@ package com.example.BackendPFE.controller;
 import com.example.BackendPFE.exception.ResourceNotFoundException;
 import com.example.BackendPFE.model.Maintenance;
 import com.example.BackendPFE.repository.MaintenanceRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ import java.util.List;
         }
 
         @PostMapping("/createMaintenance")
-        public Maintenance createMaintenance(@Valid @RequestBody Maintenance maintenance) {
+        public Maintenance createMaintenance( @RequestBody Maintenance maintenance) {
 
             return maintenanceRepository.save(maintenance);
         }

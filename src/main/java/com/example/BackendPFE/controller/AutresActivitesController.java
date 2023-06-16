@@ -5,7 +5,6 @@ import com.example.BackendPFE.model.Amenagement;
 import com.example.BackendPFE.model.AutresActivites;
 import com.example.BackendPFE.repository.AmenagementRepository;
 import com.example.BackendPFE.repository.AutresActivitesRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,7 @@ public class AutresActivitesController {
     }
 
     @PostMapping("/createAutresActivites")
-    public AutresActivites createAutresActivites(@Valid @RequestBody AutresActivites autresActivites) {
+    public AutresActivites createAutresActivites( @RequestBody AutresActivites autresActivites) {
 
         return autresActivitesRepository.save(autresActivites);
     }

@@ -1,9 +1,9 @@
 package com.example.BackendPFE.repository;
 
 import com.example.BackendPFE.model.Reference;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface ReferenceRepository extends JpaRepository<Reference,Long> {
